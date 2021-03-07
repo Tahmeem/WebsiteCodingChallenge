@@ -1,0 +1,26 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Image Storing App</title>
+    <link rel="stylesheet" type = text/css href="{% static 'main_app/main.css'%}">
+</head>
+<body>
+    <h3 class = "MainHeader">Please enter name below and upload your image</h3>
+
+    <form action = "" method = "POST" enctype="multipart/form-data">
+        <p class = "Warning"><strong>Ignore the current name field if you are not registered yet</strong><br>Instructions:
+            If you have not used this app before please check the first box. Otherwise you can check the second box to update your info. Please check only one box. You can update new image to your name or change your name. If you are changing your name enter new name in name box.</p>
+        <input type="checkbox" value = "New User" name = "validation" id = "New User">
+        <label for="New User"> I don't have an account</label><br>
+        <input type="checkbox" value = "Pre-existing User" name = "validation" id = "Existing User">
+        <label for="Existing User"> I have an account</label><br>
+        {% csrf_token %}
+        {{ second_Form.as_p }}
+        {{ form.as_p }}
+        <input type="Submit" name = "submit" value="Submit"/>
+    </form>
+
+</body>
+</html>
